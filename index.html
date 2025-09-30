@@ -6,75 +6,182 @@
   <title>The Soul Lens</title>
   <meta name="description" content="The Soul Lens — astu sisään." />
   <link rel="icon" href="assets/favicon.ico" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- Elegantti display-fontti otsikolle -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+
   <style>
-    /* Splash-tyylit (voi siirtää styles.css:n loppuun halutessasi) */
-    :root { --splash-overlay: rgba(0,0,0,.35); }
-    .splash {
-      position: fixed; inset: 0; overflow: hidden;
-      display: grid; place-items: center;
+    :root{
+      --accent: #F06C4E;      /* varalla */
+      --lilac:  #B48EEA;      /* varalla */
+      --ink:    #1F1F1F;
+      --overlay: rgba(0,0,0,.38);
+      /* Täytetään JS:llä käynnistyksessä */
+      --splash-url: url("assets/pics/splash.jpg");
+
+      /* Pastelli auringonlasku otsikkoon */
+      --grad-a: #eec3ff;   /* vaalea lila */
+      --grad-b: #ffb3c0;   /* roosa/koralli */
+      --grad-c: #ffd59a;   /* persikka/aurinko */
+      --text-shadow: 0 0 22px rgba(255,175,200,.45), 0 8px 28px rgba(0,0,0,.35);
+      --halo: radial-gradient(60% 90% at 50% 60%, rgba(255,200,170,.45), transparent 60%);
+    }
+
+    html, body { height: 100%; margin: 0; }
+    body {
       background: #000;
+      display: grid; place-items: center;
+      overflow: hidden;
     }
-    .splash::after {
-      content:""; position:absolute; inset:0; background: var(--splash-overlay);
-    }
-    .splash-bg {
-      position:absolute; inset:0;
-      background: center/cover no-repeat url('assets/pics/splash.jpg'); /* KUVA-vaihtoehto */
+
+    /* Tausta (video + fallback-kuva) */
+    .bg, .bg video, .bg::before { position: fixed; inset: 0; width: 100%; height: 100%; }
+    .bg { z-index: 0; }
+    .bg video { object-fit: cover; object-position: center; opacity: .95; }
+    .bg::before {
+      content: "";
+      background: center/cover no-repeat var(--splash-url);
       filter: contrast(1.05) saturate(1.05);
       transform: scale(1.02);
     }
-    .splash video {
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit: cover; object-position: center; opacity:.95;
+
+    /* Kontrastikerros */
+    .grain {
+      position: fixed; inset: 0; z-index: 1;
+      pointer-events: none; mix-blend-mode: soft-light; opacity: .35;
+      background-image:
+        radial-gradient(transparent 60%, rgba(0,0,0,.25)),
+        linear-gradient(var(--overlay), var(--overlay));
     }
-    .brand-title {
-      position:relative; z-index:2;
-      font-size: clamp(2.4rem, 8vw, 6rem);
-      font-weight: 800; letter-spacing:.06em;
-      color: #fff; text-decoration: none;
-      padding: .4em .6em; border-radius: 16px;
-      backdrop-filter: blur(2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      transition: transform .25s ease, opacity .25s ease;
+
+    /* Keskusblokin layout */
+    .center { z-index: 2; text-align: center; padding: 2rem; }
+
+    /* --- OTSIKKO: gradientti + hehku; EI laatikkoa ympärillä --- */
+    .brand{
+      font-family: "Fraunces", serif;
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: clamp(2.8rem, 9vw, 6.8rem);
+      line-height: 1.02;
+      display: inline-block;
+      padding: .1em .2em;     /* pienempi padding, kun laatikko poistettu */
+      border-radius: 22px;
+
+      background: linear-gradient(105deg, var(--grad-a), var(--grad-b), var(--grad-c));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--text-shadow);
+
+      position: relative;
+      isolation: isolate;
+      opacity: 0; transform: translateY(12px);
+      animation: fadeUp .9s cubic-bezier(.22,.72,.22,1) .15s forwards, breathe 6s ease-in-out 1.25s infinite;
+      text-decoration: none;
     }
-    .brand-title:hover { transform: scale(1.03); opacity:.95; }
-    .enter-tip { position:relative; z-index:2; color:#fff; opacity:.85; margin-top: .75rem; }
-    .skip-link { position:absolute; right:1rem; bottom:1rem; z-index:2; }
+
+    /* Pehmeä “halo” otsikon ympärille */
+    .brand::before{
+      content:"";
+      position:absolute; inset:-6%;
+      border-radius: 24px;
+      background: var(--halo);
+      filter: blur(10px);
+      z-index: -1;            /* nyt vain halo taustalla */
+      pointer-events: none;
+      opacity: .8;
+    }
+
+    /* Ohjeteksti */
+    .enter {
+      color: #fff; opacity: 0; margin-top: .9rem; display: inline-block;
+      font-size: .95rem; text-decoration: none;
+      transform: translateY(10px);
+      animation: fadeUp .9s cubic-bezier(.22,.72,.22,1) .35s forwards;
+    }
+
+    /* Hover / fokus -animaatiot */
+    .brand, .enter { transition: transform .28s ease, letter-spacing .28s ease, opacity .28s ease; }
+    .brand:hover, .brand:focus-visible { transform: translateY(-2px) scale(1.015); letter-spacing: .04em; }
+    .enter:hover { opacity: 1; transform: translateY(0); }
+
+    /* Ohita-intro pikanappi */
+    .skip { position: fixed; right: 1rem; bottom: 1rem; z-index: 3; }
+    .skip a{
+      display:inline-block; padding:.5rem .75rem; border-radius: 999px;
+      background: rgba(255,255,255,.2); color:#fff; text-decoration:none;
+      backdrop-filter: blur(4px);
+      opacity: 0; transform: translateY(8px);
+      animation: fadeUp .9s cubic-bezier(.22,.72,.22,1) .55s forwards;
+    }
+
+    /* Keyframes */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes breathe{
+      0%,100% { filter: drop-shadow(0 0 0 rgba(255,190,170,.35)); }
+      50%     { filter: drop-shadow(0 0 12px rgba(255,190,170,.55)); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .brand, .enter, .skip a { animation: none; opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
-<body class="splash">
-  <!-- Jos käytät KUVA-taustaa, pidä tämä div. Jos käytät VIDEOTA, poista tämä. -->
-  <div class="splash-bg" aria-hidden="true"></div>
+<body>
 
-  <!-- VIDEO-vaihtoehto (korvaa tiedostopolku ja poista yllä oleva .splash-bg-div) -->
-  <!--
-  <video autoplay muted playsinline loop aria-label="Etusivun taustavideo">
-    <source src="assets/splash.mp4" type="video/mp4" />
-  </video>
-  -->
+  <!-- TAUSTA: Video (valinnainen). Fallback-kuva tulee ::before:sta -->
+  <div class="bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source id="splashVideo" src="assets/splash.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <main class="text-center">
-    <a class="brand-title" href="home.html" aria-label="Siirry etusivulle The Soul Lens">
-      The Soul Lens
-    </a>
-    <div class="enter-tip"></div>
+  <main class="center">
+    <a class="brand" href="home.html" aria-label="Siirry The Soul Lens -etusivulle">The&nbsp;Soul&nbsp;Lens</a>
+    <div><a class="enter" href="home.html" aria-label="Jatka sivustolle"></a></div>
   </main>
 
-  <a class="btn btn-sm btn-light skip-link" href="home.html" aria-label="Ohita intro">Ohita →</a>
+  <!-- Ohita-intro -->
+  <div class="skip"><a href="home.html">Ohita</a></div>
+
+  <!-- Vuorottelulogiikka: splash.jpg <-> splash2.jpg -->
+  <script>
+    (function(){
+      const images = [
+        "assets/pics/splash.jpg",
+        "assets/pics/splash.jpg"
+      ];
+
+      // Hae edellinen indeksi ja vaihda 0 <-> 1
+      const key = "splashIndex";
+      const prev = Number(localStorage.getItem(key)) || 0;
+      const next = prev === 0 ? 1 : 0;
+      localStorage.setItem(key, String(next));
+
+      // Aseta CSS-muuttujaan valittu kuva
+      const url = `url("${images[next]}")`;
+      document.documentElement.style.setProperty("--splash-url", url);
+
+      // (Valinnainen) jos sinulla on myös kaksi videota:
+      // const vids = ["assets/splash.mp4", "assets/splash2.mp4"];
+      // const videoEl = document.getElementById("splashVideo");
+      // if (videoEl) { videoEl.src = vids[next]; videoEl.load(); }
+    })();
+  </script>
 
   <noscript>
-    <div class="position-fixed top-50 start-50 translate-middle text-center">
-      <p><a class="btn btn-primary" href="home.html">Jatka sivustolle</a></p>
+    <div style="position:fixed;inset:0;display:grid;place-items:center;text-align:center;">
+      <p style="background:rgba(0,0,0,.5);color:#fff;padding:1rem 1.25rem;border-radius:12px;">
+        JavaScript on pois käytöstä. <a href="home.html" style="color:#fff;text-decoration:underline;">Jatka sivustolle</a>.
+      </p>
     </div>
   </noscript>
-
-  <!-- (valinnainen) automaattinen siirtymä 3s kuluttua -->
-  <!--
-  <script>
-    setTimeout(() => { window.location.href = 'home.html'; }, 3000);
-  </script>
-  -->
 </body>
 </html>

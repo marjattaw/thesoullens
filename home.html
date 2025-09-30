@@ -85,18 +85,20 @@
         </div>
 
         <div class="row g-3" id="portfolioGrid">
-          <!-- Yksi kortti -->
-          <div class="col-6 col-md-4 col-lg-3">
-            <figure>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="assets/portfolio/portrait-1@1600.jpg" data-alt="Nuori nainen luonnonvalossa, lähikuva">
-                <img class="img-fluid portfolio-img" loading="lazy" alt="Nuori nainen luonnonvalossa, lähikuva"
-                     src="assets/portfolio/portrait-1@400.webp"
-                     srcset="assets/portfolio/portrait-1@400.webp 400w, assets/portfolio/portrait-1@800.webp 800w, assets/portfolio/portrait-1@1200.webp 1200w"
-                     sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 20vw" />
-              </a>
-              <figcaption>Potretit</figcaption>
-            </figure>
+          <!-- Uudet pyöreät kuvat -->
+          <div class="col-6 col-md-3">
+            <img src="assets/pics/image.png" alt="Portfolio kuva 1" class="img-fluid rounded-circle shadow-sm portfolio-round" style="aspect-ratio:1/1; object-fit:cover;" />
           </div>
+          <div class="col-6 col-md-3">
+            <img src="assets/pics/image2.png" alt="Portfolio kuva 2" class="img-fluid rounded-circle shadow-sm portfolio-round" style="aspect-ratio:1/1; object-fit:cover;" />
+          </div>
+          <div class="col-6 col-md-3">
+            <img src="assets/pics/image3.png" alt="Portfolio kuva 3" class="img-fluid rounded-circle shadow-sm portfolio-round" style="aspect-ratio:1/1; object-fit:cover;" />
+          </div>
+          <div class="col-6 col-md-3">
+            <img src="assets/pics/image4.png" alt="Portfolio kuva 4" class="img-fluid rounded-circle shadow-sm portfolio-round" style="aspect-ratio:1/1; object-fit:cover;" />
+          </div>
+        </div>
 
           <!-- Lisää kortteja esimerkkeinä -->
           <div class="col-6 col-md-4 col-lg-3">
@@ -324,6 +326,52 @@
         </div>
       </div>
     </section>
+      
+    <!-- NEWSLETTER / UUTISKIRJE -->
+    <section id="newsletter" class="py-5 bg-white border-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="section-title text-center mb-2">Liity uutiskirjeeseen</h2>
+            <p class="text-secondary text-center mb-4">Saat parhaat kuvauspaikkavinkit, miniaikojen ennakkoilmoitukset ja tarjoukset suoraan sähköpostiisi.</p>
+
+            <!-- Uutiskirjelomake: vaihda action omaan palveluun (Formspree / Brevo / ConvertKit / Mailchimp) -->
+            <form id="newsletterForm" class="row gy-3 gx-2 justify-content-center" action="https://formspree.io/f/your-newsletter-id" method="POST">
+              <!-- Honeypot roskapostin hillintään -->
+              <input type="text" name="_honeypot" class="d-none" tabindex="-1" autocomplete="off" />
+
+              <div class="col-md-5">
+                <label for="nl_name" class="form-label">Nimi</label>
+                <input type="text" id="nl_name" name="name" class="form-control" placeholder="Etunimi Sukunimi" required>
+              </div>
+              <div class="col-md-5">
+                <label for="nl_email" class="form-label">Sähköposti</label>
+                <input type="email" id="nl_email" name="email" class="form-control" placeholder="sinä@esimerkki.fi" required>
+              </div>
+              <div class="col-12 form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="1" id="nl_consent" required>
+                <label class="form-check-label" for="nl_consent">
+                  Hyväksyn, että tietojani käytetään uutiskirjeen lähettämiseen (GDPR).
+                </label>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-accent btn-lg" type="submit">Tilaa uutiskirje</button>
+              </div>
+
+              <!-- Palauteboksit -->
+              <div id="nl_success" class="alert alert-success mt-3 d-none" role="alert">
+                Kiitos liittymisestä! Vahvista tilaus sähköpostistasi, jos saat vahvistusviestin.
+              </div>
+              <div id="nl_error" class="alert alert-danger mt-3 d-none" role="alert">
+                Hups! Jokin meni pieleen. Yritä uudelleen tai ota yhteyttä sähköpostilla.
+              </div>
+            </form>
+            <p class="small text-secondary text-center mt-2">Voit perua tilauksen milloin tahansa jokaisen kirjeen lopussa olevasta linkistä.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="py-4 border-top">
@@ -366,6 +414,33 @@
       img.alt = alt;
       altBox.textContent = alt;
     });
+  </script>
+  <script>
+    // Uutiskirjeen AJAX-lähetys (Formspree tms.)
+    (function(){
+      const form = document.getElementById('newsletterForm');
+      if(!form) return;
+      const ok = document.getElementById('nl_success');
+      const err = document.getElementById('nl_error');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        ok?.classList.add('d-none');
+        err?.classList.add('d-none');
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+          if (res.ok) {
+            ok?.classList.remove('d-none');
+            form.reset();
+          } else {
+            err?.classList.remove('d-none');
+          }
+        } catch(_e){
+          err?.classList.remove('d-none');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
