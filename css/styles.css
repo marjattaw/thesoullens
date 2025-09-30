@@ -1,0 +1,59 @@
+/* ===== Brand palette (reference image) ===== */
+:root {
+  --accent: #F06C4E;     /* coral / orange primary */
+  --teal: #2F8FA1;       /* teal */
+  --mustard: #D6A31A;    /* mustard yellow */
+  --lilac: #B48EEA;      /* lilac */
+  --soft-pink: #F2C7D1;  /* light pink */
+  --ink: #1F1F1F;        /* dark text */
+  --muted: #6c757d;      /* secondary text */
+  --peach: #FAD8C8;      /* page background peach */
+}
+
+/* ===== Base ===== */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: var(--peach);            /* koko sivusto persikan värinen */
+  color: var(--ink);
+}
+
+.navbar-brand { letter-spacing: .5px; }
+footer a { color: inherit; text-decoration: none; }
+.section-title { letter-spacing:.3px; }
+
+/* ===== Buttons / Links ===== */
+.btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-accent:hover { filter: brightness(0.95); color:#fff; box-shadow: 0 0 0 .2rem rgba(240,108,78,.25); }
+
+.link-teal { color: var(--teal); }
+.link-teal:hover { color: var(--accent); }
+
+/* ===== Hero ===== */
+/* Jos haluat HEROON pelkän persikan ilman kuvaa, pidä nämä asetukset */
+.hero { position: relative; min-height: 78vh; display: grid; place-items: center; color: #fff; }
+.hero .bg { position:absolute; inset:0; background: var(--peach); }  /* ei kuvaa, vain persikka */
+.hero::after { content:""; position:absolute; inset:0; background: none; } /* poistaa gradientin */
+.hero-content { position:relative; z-index:3; text-align:center; max-width: 900px; padding: 1rem; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--ink); }
+.hero p { font-size: clamp(1.05rem, 2.5vw, 1.25rem); opacity:.95; color: var(--ink); }
+
+/* Jos haluat joskus takaisin taustakuvan + liila→koralli -overlayn, kommentoi yllä oleva .hero .bg ja .hero::after ja käytä:
+.hero .bg { position:absolute; inset:0; background: center/cover no-repeat url('assets/hero.jpg'); filter: contrast(1.05) saturate(1.05); }
+.hero::after { content:\"\"; position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,31,31,.35), rgba(31,31,31,.55)), linear-gradient(120deg, rgba(180,142,234,.55), rgba(240,108,78,.55)); }
+*/
+
+/* ===== Portfolio grid ===== */
+.portfolio-img { aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; }
+figure { margin:0; }
+figcaption { font-size: .95rem; color: var(--muted); margin-top: .35rem; }
+
+/* ===== Cards / Helpers ===== */
+.quote { font-size: 1.1rem; }
+.badge-pill { background: var(--soft-pink); color: var(--ink); }
+.border-accent { border-color: var(--accent) !important; }
+
+/* ===== Navbar brand color overrides via CSS variables (set inline in HTML as well) ===== */
+:root {
+  --bs-navbar-brand-color: var(--accent);
+  --bs-navbar-active-color: var(--accent);
+}

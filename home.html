@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Soul Lens — Valokuvaaja</title>
+  <meta name="description" content="Luova valokuvaaja Helsingissä. Potretit, perheet, brändikuvat ja tapahtumat. Varaa kuvausaika helposti verkossa." />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="The Soul Lens — Valokuvaaja" />
+  <meta property="og:description" content="Luova valokuvaaja Helsingissä. Potretit, perheet, brändikuvat ja tapahtumat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <meta property="og:url" content="https://oma-domain.fi" />
+  <link rel="icon" href="assets/favicon.ico" />  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- Schema.org (Photographer/LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Photograph",
+    "name": "The Soul Lens — Valokuvaaja",
+    "creator": {
+      "@type": "Person",
+      "name": "Marjatta Wallinheimo"
+    },
+    "publisher": {
+      "@type": "LocalBusiness",
+      "name": "Studion nimi",
+      "address": {"@type":"PostalAddress","addressLocality":"Helsinki","addressCountry":"FI"},
+      "telephone": "+358 40 000 0000"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom" style="--bs-navbar-brand-color: var(--accent); --bs-navbar-active-color: var(--accent);">
+    <div class="container">
+      <a class="navbar-brand" href="#" style="color: var(--accent);">The Soul Lens</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#palvelut">Kuvauspalvelut</a></li>
+          <li class="nav-item"><a class="nav-link" href="#minusta">Linssin takana</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ukk">Usein kysyttyä</a></li>
+          <li class="nav-item"><a class="nav-link" href="#yhteys">Yhteystiedot</a></li>
+          <li class="nav-item"><a class="btn btn-sm btn-accent ms-lg-3" href="#varaa">Varaa aika</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="bg" role="img" aria-label="Hero-taustakuva"></div>
+    <div class="hero-content container">
+      <h1>Luonnolliset, ajattomat kuvat — sinusta.
+      </h1>
+      <p>Potretit, perheet, brändikuvat ja tapahtumat Helsingin seudulla. Räätälöidyt kuvauspaketit ja selkeä hinnoittelu.</p>
+      <div class="d-flex gap-2 justify-content-center mt-3">
+        <a href="#portfolio" class="btn btn-light">Katso portfolio</a>
+        <a href="#varaa" class="btn btn-accent">Varaa kuvausaika</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="py-5 bg-white">
+      <div class="container">
+        <div class="row align-items-end mb-4">
+          <div class="col-md-8">
+            <h2 class="section-title">Portfolio</h2>
+            <p class="text-secondary">Valikoima viime vuosien projekteista. Kuvat pakattu WebP/AVIF-muotoon ja ladattu laiskasti suorituskyvyn takaamiseksi.</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <a href="#" class="link-teal">Näytä kaikki galleriat →</a>
+          </div>
+        </div>
+
+        <div class="row g-3" id="portfolioGrid">
+          <!-- Yksi kortti -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <figure>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="assets/portfolio/portrait-1@1600.jpg" data-alt="Nuori nainen luonnonvalossa, lähikuva">
+                <img class="img-fluid portfolio-img" loading="lazy" alt="Nuori nainen luonnonvalossa, lähikuva"
+                     src="assets/portfolio/portrait-1@400.webp"
+                     srcset="assets/portfolio/portrait-1@400.webp 400w, assets/portfolio/portrait-1@800.webp 800w, assets/portfolio/portrait-1@1200.webp 1200w"
+                     sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 20vw" />
+              </a>
+              <figcaption>Potretit</figcaption>
+            </figure>
+          </div>
+
+          <!-- Lisää kortteja esimerkkeinä -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <figure>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="assets/portfolio/family-1@1600.jpg" data-alt="Perhe halaamassa puistossa">
+                <img class="img-fluid portfolio-img" loading="lazy" alt="Perhe halaamassa puistossa"
+                     src="assets/portfolio/family-1@400.webp"
+                     srcset="assets/portfolio/family-1@400.webp 400w, assets/portfolio/family-1@800.webp 800w, assets/portfolio/family-1@1200.webp 1200w"
+                     sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 20vw" />
+              </a>
+              <figcaption>Perheet</figcaption>
+            </figure>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <figure>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="assets/portfolio/brand-1@1600.jpg" data-alt="Brändikuvaus kahvilassa">
+                <img class="img-fluid portfolio-img" loading="lazy" alt="Brändikuvaus kahvilassa"
+                     src="assets/portfolio/brand-1@400.webp"
+                     srcset="assets/portfolio/brand-1@400.webp 400w, assets/portfolio/brand-1@800.webp 800w, assets/portfolio/brand-1@1200.webp 1200w"
+                     sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 20vw" />
+              </a>
+              <figcaption>Brändit</figcaption>
+            </figure>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <figure>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="assets/portfolio/event-1@1600.jpg" data-alt="Hääpari auringonlaskussa">
+                <img class="img-fluid portfolio-img" loading="lazy" alt="Hääpari auringonlaskussa"
+                     src="assets/portfolio/event-1@400.webp"
+                     srcset="assets/portfolio/event-1@400.webp 400w, assets/portfolio/event-1@800.webp 800w, assets/portfolio/event-1@1200.webp 1200w"
+                     sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 20vw" />
+              </a>
+              <figcaption>Tapahtumat</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PALVELUT & HINNAT -->
+    <section id="palvelut" class="py-5 bg-light border-top border-bottom">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h2 class="section-title">Palvelut</h2>
+            <ul class="list-unstyled">
+              <li class="mb-2">• <strong>Potretit</strong> – studio / miljöö</li>
+              <li class="mb-2">• <strong>Perhe- & vastasyntyneet</strong></li>
+              <li class="mb-2">• <strong>Brändi & yrittäjät</strong> – some- ja verkkosivukuvat</li>
+              <li class="mb-2">• <strong>Tapahtumat</strong> – häät, juhlat, yritykset</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <h2 class="section-title">Hinnasto</h2>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="card h-100 shadow-sm">
+                  <div class="card-body">
+                    <h3 class="h5">Mini</h3>
+                    <p class="text-secondary mb-2">30 min • 10 kuvaa</p>
+                    <p class="h4">149 €</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card h-100 shadow-sm border-2 border-accent">
+                  <div class="card-body">
+                    <h3 class="h5">Klassikko</h3>
+                    <p class="text-secondary mb-2">60–90 min • 25 kuvaa</p>
+                    <p class="h4">299 €</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card h-100 shadow-sm">
+                  <div class="card-body">
+                    <h3 class="h5">Brändipaketti</h3>
+                    <p class="text-secondary mb-2">Suunnittelu + kuvaus • 40+ kuvaa</p>
+                    <p class="h4">alk. 590 €</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card h-100 shadow-sm">
+                  <div class="card-body">
+                    <h3 class="h5">Tapahtumat</h3>
+                    <p class="text-secondary mb-2">Tunti- / päiväveloitus</p>
+                    <p class="h4">pyydä tarjous</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINUSTA -->
+    <section id="minusta" class="py-5">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-md-5">
+            <img src="assets/pics/linssintakana.jpg" alt="Valokuvaaja Ira Vänni" class="img-fluid rounded-4 shadow-sm" loading="lazy" />
+          </div>
+          <div class="col-md-7">
+            <h2 class="section-title">Hei, olen Ira</h2>
+            <p class="lead">Rakastan luonnonvaloa, aitoja kohtaamisia ja kuvia, jotka kestävät aikaa.</p>
+            <p>Olen helsinkiläinen valokuvaaja. Tyylini on luonnollinen ja lämmin, ja pyrin siihen että kuvauksissa on rennon hauska fiilis. Kuvien toimitus tapahtuu verkon kautta yksityiseen asiakasgalleriaan.</p>
+            <ul>
+              <li>Toimitus 5–10 arkipäivää</li>
+              <li>Huolellinen kuvankäsittely</li>
+              <li>Mahdollisuus julkaisuoikeuksiin ja lisäpalveluihin</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VARAA AIKA / KALENTERI -->
+    <section id="varaa" class="py-5 bg-light border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h2 class="section-title">Varaa kuvausaika</h2>
+            <p>Voit varata ajan suoraan kalenteristani tai lähettää toiveen lomakkeella.</p>
+            <!-- Upota esim. Calendly -->
+            <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+              <iframe src="https://calendly.com/" title="Varauskalenteri" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="col-lg-6" id="yhteys">
+            <h2 class="section-title">Yhteydenotto</h2>
+            <form class="row g-3" action="https://formspree.io/f/your-id" method="POST">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Nimi</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Sähköposti</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Viesti</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Kerro toiveistasi…" required></textarea>
+              </div>
+              <div class="col-12 form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="consent" required>
+                <label class="form-check-label" for="consent">
+                  Hyväksyn, että tietoni käsitellään yhteydenottoa varten (GDPR).
+                </label>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-accent" type="submit">Lähetä</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UKK -->
+    <section id="ukk" class="py-5 bg-white border-top">
+      <div class="container">
+        <h2 class="section-title mb-4">Usein kysyttyä</h2>
+        <div class="accordion" id="faq">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="q1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true" aria-controls="a1">
+                Kuinka nopeasti kuvat toimitetaan?
+              </button>
+            </h3>
+            <div id="a1" class="accordion-collapse collapse show" aria-labelledby="q1" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Toimitus 5–10 arkipäivää yksityiseen asiakasgalleriaan. Kiireellisistä toimeksiannoista voidaan sopia erikseen.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="q2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">
+                Mitä kuvaus sisältää?
+              </button>
+            </h3>
+            <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Suunnittelun, kuvauksen, huolellisen perussäädön ja valikoidun määrän viimeisteltyjä kuvia diginä. Lisäkuvat ja -palvelut mahdollisia.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="q3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">
+                Voinko ostaa julkaisuoikeudet yrityskäyttöön?
+              </button>
+            </h3>
+            <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Kyllä. Brändi- ja yrityskuvauksiin sisältyvät käyttöoikeudet sovitaan selkeästi tarjouksessa ja laskussa.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title mb-4">Asiakkaat kertovat</h2>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="p-4 rounded-4 border h-100">
+              <p class="quote mb-1">“Koko perhe rentoutui heti – kuvat ovat upeat!”</p>
+              <p class="text-secondary mb-0">– Laura, perhekuvaus</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 rounded-4 border h-100">
+              <p class="quote mb-1">“Brändikuvat toivat sometileille yhtenäisen ilmeen. Suosittelen!”</p>
+              <p class="text-secondary mb-0">– Antti, yrittäjä</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div>
+        <strong>The Soul Lens</strong> — Helsinki
+        <span class="text-secondary">• Y-tunnus 1234567-8</span>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="Sähköposti">info@oma-domain.fi</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox / Modal -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark">
+        <button type="button" class="btn-close btn-close-white ms-auto m-2" data-bs-dismiss="modal" aria-label="Sulje"></button>
+        <img id="lightboxImg" alt="" class="w-100" style="max-height:85vh; object-fit:contain" />
+        <div class="text-white-50 small px-3 pb-3" id="lightboxAlt"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Yksinkertainen lightbox: kopioi täysikokoinen kuva modaliin
+    const modal = document.getElementById('lightboxModal');
+    modal.addEventListener('show.bs.modal', e => {
+      const trigger = e.relatedTarget;
+      const full = trigger?.getAttribute('data-full');
+      const alt = trigger?.getAttribute('data-alt') || '';
+      const img = document.getElementById('lightboxImg');
+      const altBox = document.getElementById('lightboxAlt');
+      img.src = full;
+      img.alt = alt;
+      altBox.textContent = alt;
+    });
+  </script>
+</body>
+</html>
